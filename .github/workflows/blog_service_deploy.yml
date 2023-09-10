@@ -1,0 +1,28 @@
+name: CI to Blog.App
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-container:
+    name: build main docker image and push to docker hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Build image and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: danielchucks/blog-app:latest
+          no-cache: true
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}

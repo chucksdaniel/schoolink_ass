@@ -15,23 +15,32 @@ import { GetUser } from '../auth/decorator';
 import { JwtGuard } from '../auth/guard';
 import { BlogService } from './blog.service';
 import { CreateBlogDto, EditBlogDto } from './dto';
+import { ApiHeader, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiHeader({
+  name: 'Authorization',
+  description: 'Bearer token',
+})
 @UseGuards(JwtGuard)
 @Controller('blogs')
+@ApiTags('Blog')
 export class BlogController {
   constructor(private blogService: BlogService) {}
 
   @Post()
-  createblog(@GetUser('id') userId: number, @Body() dto: CreateBlogDto) {
+  @ApiOperation({ summary: 'Create blog' })
+  createBlog(@GetUser('id') userId: number, @Body() dto: CreateBlogDto) {
     return this.blogService.createBlog(userId, dto);
   }
 
   @Get()
+  @ApiOperation({ summary: 'Fetch all blogs' })
   getblogs(@GetUser('id') userId: number) {
     return this.blogService.getBlogs(userId);
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Fetch a particular blog' })
   getblogById(
     @GetUser('id') userId: number,
     @Param('id', ParseIntPipe) blogId: number,
@@ -40,6 +49,7 @@ export class BlogController {
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Edit a blog own by a user' })
   editblogById(
     @GetUser('id') userId: number,
     @Param('id', ParseIntPipe) blogId: number,
@@ -50,6 +60,7 @@ export class BlogController {
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
+  @ApiOperation({ summary: 'Delete a blog own by a user' })
   deleteblogById(
     @GetUser('id') userId: number,
     @Param('id', ParseIntPipe) blogId: number,

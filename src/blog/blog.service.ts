@@ -33,7 +33,7 @@ export class BlogService {
     return blog;
   }
 
-  async editBlog(userId: number, blogId, dto: EditBlogDto) {
+  async editBlog(userId: number, blogId: number, dto: EditBlogDto) {
     const blog = await this.prisma.blog.findUnique({
       where: {
         id: blogId,

@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "b3d903ef-f93f-485a-a380-f74eb127515c",
+		"name": "schoolink_blog_assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12253420"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"shadon\",\n    \"email\": \"iamadnsdd@gmail.com\",\n    \"password\": \"testing123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-54-164-134-69.compute-1.amazonaws.com:5001/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"ec2-54-164-134-69",
+								"compute-1",
+								"amazonaws",
+								"com"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"iamadnsdd@gmail.com\",\n    \"password\": \"testing123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-54-164-134-69.compute-1.amazonaws.com:5001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"ec2-54-164-134-69",
+								"compute-1",
+								"amazonaws",
+								"com"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "blogs",
+			"item": [
+				{
+					"name": "Create a blog post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiaWFtYWRuc2RkQGdtYWlsLmNvbSIsImlhdCI6MTY5NDM5NzY0MywiZXhwIjoxNjk0Mzk4NTQzfQ.lG7eYFdmxh3S8g4sW9QMhqq4dOOgu9lRsP0J1hsi1no",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"First title\",\n    \"post\": \"This is my first Post\",\n    \"link\": \"This is a link to image\",\n    \"description\": \"Descrip[tion of the blog\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://ec2-54-164-134-69.compute-1.amazonaws.com:5001/api/blogs",
+							"protocol": "http",
+							"host": [
+								"ec2-54-164-134-69",
+								"compute-1",
+								"amazonaws",
+								"com"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"blogs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a blog post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"First title\",\n    \"post\": \"This is my first Post\",\n    \"link\": \"This is a link to image\",\n    \"description\": \"Descrip[tion of the blog\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://ec2-54-164-134-69.compute-1.amazonaws.com:5001/api/blogs",
+									"protocol": "http",
+									"host": [
+										"ec2-54-164-134-69",
+										"compute-1",
+										"amazonaws",
+										"com"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"blogs"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e0-ZR/NK7KhJSCxWdI0I9BrKiztvpU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Sep 2023 02:01:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"createdAt\": \"2023-09-11T02:01:04.571Z\",\n    \"updatedAt\": \"2023-09-11T02:01:04.571Z\",\n    \"title\": \"First title\",\n    \"post\": \"This is my first Post\",\n    \"description\": \"Descrip[tion of the blog\",\n    \"link\": \"This is a link to image\",\n    \"userId\": 2\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
